@@ -1,5 +1,6 @@
 Launch my swarm by using docker
 1. setup backbone peers
+
 If you plan to work with unreliable GPU machines (e.g. spot instances), it is a good practice to have a few CPU-only machines that are always online. These bootstrap peers can be used as --initial_peers, to connect new GPU servers to the existing ones. They can also serve as libp2p relays for GPU servers that lack open ports (e.g., because they are behind NAT and/or firewalls).
 
 If you have reliable GPU machines, you can skip this step and use these servers as initial peers, given that you provide --host_maddrs and --identity_path arguments (described below) directly to the Petals servers.
@@ -13,12 +14,13 @@ Once you run it, look at the outputs and find the following line:
 Mon 00 01:23:45.678 [INFO] Running a DHT instance. To connect other peers to this one, use --initial_peers /ip4/YOUR_ADDRESS_HERE/tcp/31337/p2p/QmTPAIfThisIsMyAddressGoFindYoursnCfj
 ```
 You can provide this address as --initial_peers to GPU servers or other backbone peers. If there is a risk that this peer goes down, you can launch additional hivemind-dht instances and provide multiple addresses. New peers will be able to join the swarm as long as at least one of their initial peers is alive.
-3. start petals servers
+2. start petals servers
+
 Now, you can run Petals servers as usual with an extra --initial_peers argument pointing to your bootstrap peers:
 ```bash
 sudo docker run -it -p 31330:31330 --ipc host --gpus all --volume petals-cache:/cache --rm learningathome/petals:main python -m petals.cli.run_server bigscience/bloom --initial_peers /ip4/143.248.53.25/tcp/31330/p2p/Qmc31JLkkB9fG3dkYoXt1499cPoajfSxjC3E1Fh6pqSCXo
 ```
-4. use the model and run 
+3. use the model and run 
 ```python
 import torch
 from transformers import AutoTokenizer
