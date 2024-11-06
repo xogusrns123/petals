@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://i.imgur.com/7eR7Pan.png" width="400"><br>
+    <br>
     Run large language models at home, BitTorrent-style.<br>
     Fine-tuning and inference <a href="https://github.com/bigscience-workshop/petals#benchmarks">up to 10x faster</a> than offloading
     <br><br>
