@@ -14,6 +14,7 @@ Once you run it, look at the outputs and find the following line:
 Mon 00 01:23:45.678 [INFO] Running a DHT instance. To connect other peers to this one, use --initial_peers /ip4/YOUR_ADDRESS_HERE/tcp/31337/p2p/QmTPAIfThisIsMyAddressGoFindYoursnCfj
 ```
 You can provide this address as --initial_peers to GPU servers or other backbone peers. If there is a risk that this peer goes down, you can launch additional hivemind-dht instances and provide multiple addresses. New peers will be able to join the swarm as long as at least one of their initial peers is alive.
+
 2. start petals servers
 
 Now, you can run Petals servers as usual with an extra --initial_peers argument pointing to your bootstrap peers:
